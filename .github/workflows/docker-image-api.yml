@@ -26,4 +26,4 @@ jobs:
       run: |
         cd api/
         docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-api:v1
-        docker image push ghcr.io/kmayer10/python-api: v1
+        docker image push ghcr.io/kmayer10/python-api:v1
