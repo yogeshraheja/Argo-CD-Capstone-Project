@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker image build . -f python/Dockerfile -t python:latest
+      run: docker image build . -f python/Dockerfile -t python-flask:latest
     - name: Docker Login
       uses: docker/login-action@v3.3.0
       with:
@@ -27,7 +27,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: PUSH to GHCR Repo
       run: | 
-        docker image tag python:latest ghcr.io/kmayer10/python:latest
-        docker image push ghcr.io/kmayer10/python:latest
+        docker image tag python-flask:latest ghcr.io/kmayer10/python-flask:latest
+        docker image push ghcr.io/kmayer10/python-flask:latest
       
         
