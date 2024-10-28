@@ -24,6 +24,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build & PUSH the Docker image
       run: |
-        cd api/
+        cd web/
         docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-web:v1
         docker image push ghcr.io/kmayer10/python-web:v1
