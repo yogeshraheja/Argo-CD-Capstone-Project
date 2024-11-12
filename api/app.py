@@ -2,7 +2,9 @@ from flask import Flask, jsonify, request
 import psycopg2
 import os
 
-	@@ -8,7 +8,7 @@
+app = Flask(__name__)
+
+# Database connection settings
 DB_HOST = os.getenv("PGHOST", "localhost")
 DB_NAME = os.getenv("PGDATABASE", "postgres")
 DB_USER = os.getenv("PGUSER", "postgres")
@@ -10,7 +12,22 @@ DB_PASSWORD = os.getenv("PGPASSWORD", "postgres")
 
 def get_employees():
     """Fetch employees from the database."""
-	@@ -31,12 +31,45 @@ def get_employees():
+    try:
+        connection = psycopg2.connect(
+            host=DB_HOST,
+            database=DB_NAME,
+            user=DB_USER,
+            password=DB_PASSWORD
+        )
+        cursor = connection.cursor()
+        cursor.execute("SELECT employee_id, name, date_of_joining, designation FROM employee;")
+        employees = cursor.fetchall()
+        return [{"employee_id": emp[0], "name": emp[1], "date_of_joining": emp[2], "designation": emp[3]} for emp in employees]
+    except Exception as e:
+        print(f"Error fetching employees: {e}")
+        return []
+    finally:
+        if connection:
             cursor.close()
             connection.close()
 
