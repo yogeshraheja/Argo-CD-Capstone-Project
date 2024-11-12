@@ -25,5 +25,5 @@ jobs:
     - name: Build & PUSH the Docker image
       run: |
         cd web/
-        docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-web:v1
-        docker image push ghcr.io/kmayer10/python-web:v1
+        docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-web:v2
+        docker image push ghcr.io/kmayer10/python-web:v2
