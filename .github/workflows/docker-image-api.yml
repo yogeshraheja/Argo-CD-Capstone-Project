@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'api/*'
+      - '.github/workflows/docker-image-api.yml'
   pull_request:
     branches: [ "main" ]
 
@@ -25,5 +26,5 @@ jobs:
     - name: Build & PUSH the Docker image
       run: |
         cd api/
-        docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-api:v2
-        docker image push ghcr.io/kmayer10/python-api:v2
+        docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-api:v2.${{ github.run_number }}
+        docker image push ghcr.io/kmayer10/python-api:v2.${{ github.run_number }}
