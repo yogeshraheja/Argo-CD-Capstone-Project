@@ -17,4 +17,4 @@ spec:
   source:
     repoURL: git@github.com:kmayer10/python-app.git
     path: manifests/apps/web
-    targetRevision: argocd-demo
+    targetRevision: main
