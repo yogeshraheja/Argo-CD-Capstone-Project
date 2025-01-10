@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-connect
+data:
+  API_HOST: pythonapp-api
+  API_PORT: "8000"

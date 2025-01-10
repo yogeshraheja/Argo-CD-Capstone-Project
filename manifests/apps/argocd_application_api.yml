@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pythonapp-apiservice
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    name: in-cluster
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+
+  project: default
+
+  source:
+    repoURL: git@github.com:kmayer10/python-app.git
+    path: manifests/apps/api
+    targetRevision: argocd-demo

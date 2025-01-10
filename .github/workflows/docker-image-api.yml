@@ -1,20 +1,15 @@
 name: API Docker Image CI
-
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "argocd-demo"  ]
     paths:
       - 'api/*'
       - '.github/workflows/docker-image-api.yml'
   pull_request:
-    branches: [ "main" ]
-
+    branches: [ "main", "argocd-demo" ]
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Docker Login
@@ -28,3 +23,9 @@ jobs:
         cd api/
         docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-api:v2.${{ github.run_number }}
         docker image push ghcr.io/kmayer10/python-api:v2.${{ github.run_number }}
+        cp deployment.yaml ../manifests/apps/api/deployment.yaml
+        sed -i 's/ImageTag/v2.${{ github.run_number }}/g' ../manifests/apps/api/deployment.yaml
+        git config --global user.email "kulbhushan.mayer@gmail.com"
+        git config --global user.name "Kulbhushan Mayer"
+        git commit -am "Updated Image Version to v2.${{ github.run_number }}"
+        git push origin argocd-demo

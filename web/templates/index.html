@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ thinknyx_info.company_name }}</title>
+</head>
+<body>
+    <h1>Welcome to {{ thinknyx_info.company_name }}</h1>
+    <p>{{ thinknyx_info.description }}</p>
+
+    <h3>Links:</h3>
+    <ul>
+        <li><a href="{{ thinknyx_info.linkedin_url }}" target="_blank">LinkedIn Profile</a></li>
+        <li><a href="{{ thinknyx_info.youtube_url }}" target="_blank">YouTube Channel</a></li>
+        <li><a href="{{ thinknyx_info.employees_link }}">View Employees</a></li>
+    </ul>
+</body>
+</html>

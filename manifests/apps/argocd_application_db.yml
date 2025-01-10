@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pythonapp-database
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    name: in-cluster
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+
+  project: default
+
+  source:
+    repoURL: git@github.com:kmayer10/python-app.git
+    path: manifests/apps/db
+    targetRevision: argocd-demo

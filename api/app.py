@@ -10,6 +10,35 @@ DB_NAME = os.getenv("PGDATABASE", "postgres")
 DB_USER = os.getenv("PGUSER", "postgres")
 DB_PASSWORD = os.getenv("PGPASSWORD", "postgres")
 
+def create_table_if_not_exists():
+    """Create the employee table if it doesn't exist."""
+    try:
+        connection = psycopg2.connect(
+            host=DB_HOST,
+            database=DB_NAME,
+            user=DB_USER,
+            password=DB_PASSWORD
+        )
+        cursor = connection.cursor()
+        
+        # SQL query to create the table if it doesn't exist
+        create_table_query = """
+        CREATE TABLE IF NOT EXISTS employee (
+            employee_id SERIAL PRIMARY KEY,
+            name VARCHAR(100) NOT NULL,
+            date_of_joining DATE,
+            designation VARCHAR(100) NOT NULL
+        );
+        """
+        cursor.execute(create_table_query)
+        connection.commit()
+    except Exception as e:
+        print(f"Error creating table: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+
 def get_employees():
     """Fetch employees from the database."""
     try:
@@ -71,4 +100,6 @@ def add_employee():
             connection.close()
 
 if __name__ == '__main__':
+    # Create table if it doesn't exist when the app starts
+    create_table_if_not_exists()
     app.run(host='0.0.0.0', port=8000)

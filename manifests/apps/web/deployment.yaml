@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonapp-web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: ghcr.io/kmayer10/python-web:v2.5
+        resources:
+          limits:
+            memory: "75Mi"
+            cpu: "75m"
+        ports:
+        - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: api-connect

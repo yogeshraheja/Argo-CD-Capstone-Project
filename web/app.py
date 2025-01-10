@@ -8,6 +8,21 @@ app = Flask(__name__)
 API_HOST = os.getenv("API_HOST", "localhost")
 API_PORT = os.getenv("API_PORT", "8000")
 
+@app.route('/')
+def index():
+    """Main landing page with information about Thinknyx Technologies LLP."""
+    thinknyx_info = {
+        "company_name": "Thinknyx Technologies LLP",
+        "description": (
+            "Thinknyx Technologies LLP is a leading technology solutions provider "
+            "specializing in software development, consulting, and digital transformation."
+        ),
+        "linkedin_url": "https://www.linkedin.com/company/thinknyx-technologies",
+        "youtube_url": "https://www.youtube.com/@thinknyxtechnologies7446",
+        "employees_link": url_for('employees')
+    }
+    return render_template('index.html', thinknyx_info=thinknyx_info)
+
 @app.route('/employees')
 def employees():
     """Fetch and display employee information."""
