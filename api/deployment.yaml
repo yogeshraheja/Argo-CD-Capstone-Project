@@ -20,6 +20,7 @@ spec:
             cpu: "75m"
         ports:
         - containerPort: 8000
+          name: pythonapp-api
         envFrom:
           - secretRef:
               name: db-connect
