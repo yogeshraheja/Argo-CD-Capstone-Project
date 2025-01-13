@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: appofapps
+  name: capstone-appofapps
   namespace: argocd
 spec:
   destination:
