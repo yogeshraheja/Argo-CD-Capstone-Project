@@ -1,4 +1,4 @@
-# BASE IMAGE
+# BASE IMAGE for New Build
 FROM ghcr.io/kmayer10/python-flask:latest
 RUN apt-get install -y python3-requests
 RUN mkdir -p /app/templates
