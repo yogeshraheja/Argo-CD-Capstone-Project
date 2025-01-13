@@ -1,4 +1,4 @@
-# BASE IMAGE
+# BASE IMAGE For Build
 FROM ghcr.io/kmayer10/python-flask:latest
 RUN apt-get update
 RUN apt-get install -y python3-psycopg2

@@ -1,2 +1,3 @@
-# python-app
-Sample Python Repository for Demos
+# Argo-CD-Capstone-Project
+
+Sample code for Argo-CD-Capstone-Project
