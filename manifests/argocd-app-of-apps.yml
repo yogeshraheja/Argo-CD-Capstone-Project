@@ -10,7 +10,7 @@ spec:
     automated: {}
   project: default
   source:
-    repoURL: git@github.com:kmayer10/python-app.git
+    repoURL: https://github.com/yogeshraheja/Argo-CD-Capstone-Project.git
     path: manifests/apps
     targetRevision: main
     

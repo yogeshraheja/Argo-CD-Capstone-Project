@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/kmayer10/python-api:ImageTag
+        image: ghcr.io/yogeshraheja/python-api:ImageTag
         resources:
           limits:
             memory: "75Mi"

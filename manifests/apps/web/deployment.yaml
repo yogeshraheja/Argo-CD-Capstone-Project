@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: ghcr.io/kmayer10/python-web:v2.8
+        image: ghcr.io/yogeshraheja/python-web:v2.8
         resources:
           limits:
             memory: "75Mi"

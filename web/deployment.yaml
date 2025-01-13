@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: ghcr.io/kmayer10/python-web:ImageTag
+        image: ghcr.io/yogeshraheja/python-web:ImageTag
         resources:
           limits:
             memory: "75Mi"

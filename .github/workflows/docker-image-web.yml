@@ -21,11 +21,11 @@ jobs:
     - name: Build & PUSH the Docker image
       run: |
         cd web/
-        docker image build . -f Dockerfile -t ghcr.io/kmayer10/python-web:v2.${{ github.run_number }}
-        docker image push ghcr.io/kmayer10/python-web:v2.${{ github.run_number }}
+        docker image build . -f Dockerfile -t ghcr.io/yogeshraheja/python-web:v2.${{ github.run_number }}
+        docker image push ghcr.io/yogeshraheja/python-web:v2.${{ github.run_number }}
         cp deployment.yaml ../manifests/apps/web/deployment.yaml
         sed -i 's/ImageTag/v2.${{ github.run_number }}/g' ../manifests/apps/web/deployment.yaml
-        git config --global user.email "kulbhushan.mayer@gmail.com"
-        git config --global user.name "Kulbhushan Mayer"
+        git config --global user.email "yogesh.raheja@thinknyx.com"
+        git config --global user.name "Yogesh Raheja"
         git commit -am "Updated Image Version to v2.${{ github.run_number }}"
         git push origin ${{ github.ref }}
