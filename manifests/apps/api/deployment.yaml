@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/yogeshraheja/python-api:v2.27
+        image: ghcr.io/yogeshraheja/python-api:v2.2
         resources:
           limits:
             memory: "75Mi"
